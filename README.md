@@ -4,6 +4,7 @@
 <br/>
 <시간이 흐르고>
 <br/>
----
+---  
+
 ## R-CNN의 탄생
 기존의 방법중에 _Sliding window_ , _Selective search_가 있음.
