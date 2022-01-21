@@ -46,6 +46,7 @@ Selective search는 _Efficient Graph-Based Image Segmentation_ 를 기초로 사
 
 * ### R-CNN   
 _Girshick, Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation." Proceedings of the IEEE conference on computer vision and pattern recognition. 2014._  
+#### Contribution 1  
 R-CNN은 Region proposal + CNN이라 R-CNN이다. Object detection을 사용할때 물체가 있을법한 위치에 CNN을 돌리는방법.  
 R-CNN은 입력 영상에 Selective search를 이용하여 Region proposal을 하고, 그 후보들에 전부다 CNN을 돌려 결과를 내는방법.  
 ![image](https://user-images.githubusercontent.com/88817336/150487156-0c8c25ec-3a99-43e2-a4e1-16f57d9bc95c.png)  
@@ -72,7 +73,27 @@ SPP-Net은 fc layer이전에 spartial pyramid pooling을 추가하여 고정된 
 R-CNN은 Region proposal을 하여 2000개의 위치를 proposal받고, 그 각 위치에 CNN을 돌리게된다. 문제는 2000번의 CNN을 하기때문에 test에도 엄청나게 느린속도와 많은 메모리를 소요하게됨.  
 SPP-Net은 이부분에 집중하여 Input 이미지에 CNN을 돌리고 각 추출된 feature들에 대해 region proposal을 하게된다.   
 추출된 feature들은 사이즈가 작고 가벼우므로 region proposal의 속도가 빠르다.  
-SPP-Net은 기존 R-CNN의 2000번의 CNN에 비해 1번의 CNN만 돌려 속도를 높혔다.
+SPP-Net은 기존 R-CNN의 2000번의 CNN에 비해 1번의 CNN만 돌려 속도를 높혔다.  
 ![image](https://user-images.githubusercontent.com/88817336/150490393-3806d83e-76cb-47f7-b5b3-864728ebf0aa.png)  
+
+---
+
+* ### Fast R-CNN  
+_Girshick, Ross. "Fast r-cnn." Proceedings of the IEEE international conference on computer vision. 2015._  
+이름도 유명한 Fast R-CNN이다. 좀 이해하기가 어렵고 상당히... 어렵다.  
+#### Contribution 1  
+SPP-Net의 문제점은 multi-stage pipeline이라는것이다. 따라서 결과를 여러 과정을 거쳐서 Real-time으로서 무겁다.  
+또한 Spatial pyramid pooling은 학습이 되지않는데, Fast R-CNN은 ROI Pooling을 적용하였다.  
+ROI (=Region proposal을 통해 나온 각 영역들)을 통해 유연하게 fc layer로 넘겨주는게 가능해졌고, 학습이 가능해졌다.  
+![image](https://user-images.githubusercontent.com/88817336/150491907-a70dd7b5-49c1-4894-95d7-b7251e336b47.png)  
+방법은 Input 이미지를 한쪽에서는 Region proposal을 돌리고, 나머지 하나는 CNN으로 돌린다.  
+CNN으로 나온 feature에 Region proposal에서 나온 결과 위치를 투영시킨다.  
+![image](https://user-images.githubusercontent.com/88817336/150492142-3a2de41a-5ebf-4da2-9955-cc94743a78b0.png)  
+위의 이미지를 예시로 들면, 강아지 위치는 왼쪽 아래인데 그 위치를 그대로 feature 사이즈에 맞춰서 featrue에서 그 위치를 잘라 Max pooling을 하여 2x2의 사이즈를 확보한다.  
+이런식으로 하게되면 fc layer에 들어가는 input을 조정할수 있다.  
+</br>
+#### Contribution 2  
+
+
 
 
