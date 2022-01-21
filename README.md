@@ -1,4 +1,10 @@
 # Catching_deep_learning_history
+이 Read Me는 Object detection의 흐름을 잡기위해 정리해둔것이다.  
+위에서 부터 아래로 관련 연구들과 순서들이고, 논문 원본 해석 + 논문 리뷰 정리 + 자의적 해석으로 오역/잘못이해 된 부분이 있을수있다.  
+_Made by Jacob Jisu Kang._
+
+---
+
 CNN이 세상에 알려지며 object classificaiton과 object detection의 관심이 늘어남.  
 하지만 CNN을 사용하여 object detection을 하는것은 여전히 어려움.  
 </br>
