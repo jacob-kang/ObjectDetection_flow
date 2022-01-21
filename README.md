@@ -82,10 +82,11 @@ SPP-Net은 기존 R-CNN의 2000번의 CNN에 비해 1번의 CNN만 돌려 속도
 _Girshick, Ross. "Fast r-cnn." Proceedings of the IEEE international conference on computer vision. 2015._  
 이름도 유명한 Fast R-CNN이다. 좀 이해하기가 어렵고 상당히... 어렵다.  
 #### Contribution 1  
-SPP-Net의 문제점은 multi-stage pipeline이라는것이다. 따라서 결과를 여러 과정을 거쳐서 Real-time으로서 무겁다.  
-또한 Spatial pyramid pooling은 학습이 되지않는데, Fast R-CNN은 ROI Pooling을 적용하였다.  
-ROI (=Region proposal을 통해 나온 각 영역들)을 통해 유연하게 fc layer로 넘겨주는게 가능해졌고, 학습이 가능해졌다.  
 ![image](https://user-images.githubusercontent.com/88817336/150491907-a70dd7b5-49c1-4894-95d7-b7251e336b47.png)  
+Fast R-CNN은 SPP-Net과 똑같이 Input 이미지에 바로 CNN을 돌리는것은 똑같다.  
+차이점은 SPP-Net에서는 일부 feature에서의 Region proposal이 이상한 결과를 가져오게된다.  
+따라서 좀더 확실하게 바로 input 이미지를 바로 Region proposal을 돌리고 그 결과를 feature에 투영하여 찾는방법을 고안한것이다.  
+ROI (=Region proposal을 통해 나온 각 영역들)을 통해 유연하게 fc layer로 넘겨주는게 가능해진것이다.  
 방법은 Input 이미지를 한쪽에서는 Region proposal을 돌리고, 나머지 하나는 CNN으로 돌린다.  
 CNN으로 나온 feature에 Region proposal에서 나온 결과 위치를 투영시킨다.  
 ![image](https://user-images.githubusercontent.com/88817336/150492142-3a2de41a-5ebf-4da2-9955-cc94743a78b0.png)  
@@ -93,6 +94,11 @@ CNN으로 나온 feature에 Region proposal에서 나온 결과 위치를 투영
 이런식으로 하게되면 fc layer에 들어가는 input을 조정할수 있다.  
 </br>
 #### Contribution 2  
+SPP-Net의 문제점은 multi-stage pipeline이라는것이다. 따라서 결과를 여러 과정을 거쳐서 Real-time으로서 무겁다.  
+SPP-Net은 CNN이후 SVM과 bbox regression를 이용하는데, 이것들을 통채로 한꺼번에 학습이 되지않는다.  
+Fast R-CNN은 그 모든것들을 multitask loss로 한꺼번에 뭉쳐서 사용하였다.  
+![image](https://user-images.githubusercontent.com/88817336/150493542-1ca033e9-bf57-40c3-90b5-9fb1e46dcf87.png)  
+위 이미지는 Classification과 localization의 loss를 합친것이고, 학습이 가능하여 약간의 정확도와 빠른속도를 확보하였다.  
 
 
 
