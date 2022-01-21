@@ -17,6 +17,8 @@ _Felzenszwalb, Pedro F., and Daniel P. Huttenlocher. "Efficient graph-based imag
 ![image](https://user-images.githubusercontent.com/88817336/150453015-354f0261-4915-49d8-9d3b-58518cfee509.png)  
 위와 같이 잘 판별해 낸다.  
 
+---
+
 * ### Selective Search for Object Recognition  
 _Uijlings, Jasper RR, et al. "Selective search for object recognition." International journal of computer vision 104.2 (2013): 154-171._  
 </br>
