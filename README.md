@@ -32,5 +32,15 @@ Selective search는 _Efficient Graph-Based Image Segmentation_ 를 기초로 사
 방법은 아래와 같은데  
 1. 우선 _Efficient Graph-Based Image Segmentation_ 를 사용하여 초기영역을 추출  
 2. 탐욕 알고리즘을 사용하여, 여러 추출한 영역중 유사도를 추출하여 가장 비슷한 영역을 골라 통합시킴.  
+3. 통합된 영역을 바탕으로 후보영역을 만들어 냄.  
+
+![image](https://user-images.githubusercontent.com/88817336/150485838-6f4b3e02-fee9-458c-8fd8-0320ec2532dd.png)
+
+</br>
+---
+
+* ### R-CNN   
+_Girshick, Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation." Proceedings of the IEEE conference on computer vision and pattern recognition. 2014._  
+
 
 
