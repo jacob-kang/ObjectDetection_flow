@@ -95,11 +95,24 @@ CNN으로 나온 feature에 Region proposal에서 나온 결과 위치를 투영
 </br>
 #### Contribution 2  
 SPP-Net의 문제점은 multi-stage pipeline이라는것이다. 따라서 결과를 여러 과정을 거쳐서 Real-time으로서 무겁다.  
-SPP-Net은 CNN이후 SVM과 bbox regression를 이용하는데, 이것들을 통채로 한꺼번에 학습이 되지않는다.  
-Fast R-CNN은 그 모든것들을 multitask loss로 한꺼번에 뭉쳐서 사용하였다.  
+SPP-Net은 CNN이후 SVM과 bbox regression를 이용하는데, 이것들을 통채로 한꺼번에 학습이 되지않는다. CNN이후 하나는 SVM 하나는 regression으로 서로 다른모델이기때문.  
+Fast R-CNN은 그 모든것들을 multitask loss로 한꺼번에 뭉쳐서 사용하였다. ROI영역을 feature영역에 투영하여 동일한 데이터로 각각 softmax, regression에 들어가므로 연산을 공유해서 end-to-end로서 학습이 가능하다는 의미.     
 ![image](https://user-images.githubusercontent.com/88817336/150493542-1ca033e9-bf57-40c3-90b5-9fb1e46dcf87.png)  
 위 이미지는 Classification과 localization의 loss를 합친것이고, 학습이 가능하여 약간의 정확도와 빠른속도를 확보하였다.  
 
+---
+
+* ### Faster R-CNN  
+_Ren, Shaoqing, et al. "Faster r-cnn: Towards real-time object detection with region proposal networks." Advances in neural information processing systems 28 (2015): 91-99._  
+이 논문에서부터는 짜잘한 테크닉이 많이나오는데, 분명 중요하지만 이해하기가 상당히 어렵다.  
+Faster R-CNN은 Fast R-CNN의 일부 문제들을 다른시선으로 바라본것같다.  
+#### Contribution 1  
+이전 Fast R-CNN의 문제점은 Region proposal을 사용할때 Selective search를 사용했는데, 이것은 하나의 모듈로서 사용하였고, CPU에서 돌아가므로 속도가 상당히 느렸다. 프로세싱 타임 2.3초중 2초가 Region proposal에 사용되었다고 한다. 그래서 Bottle neck(병목현상)이 발생하여 비효율적이었다.  
+이부분에 Faster R-CNN에서는 Region proposal을 외부 모듈에서 사용하는것이 아니라 하나의 Region proposal을 위한 Network를 만들었고(이하 RPN), 이것을 통해 GPU에 연산을 시켜 빠른 연산속도를 이뤄냈다.  
+![image](https://user-images.githubusercontent.com/88817336/150631660-a3c730c9-63b9-448f-93ab-4dd83f93219b.png)  
+위의 사진으로 구조를 볼수있는데, Fast R-CNN이랑 RPN의 유무 빼고 모두 같다.  
+RPN의 결과와 feature의 결과를 투영시켜 똑같이 결과를 내는대에는 똑같다.  
+RPN의 구조와 학습방법은 
 
 
 
