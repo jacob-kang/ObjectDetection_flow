@@ -109,10 +109,19 @@ Faster R-CNN은 Fast R-CNN의 일부 문제들을 다른시선으로 바라본�
 #### Contribution 1  
 이전 Fast R-CNN의 문제점은 Region proposal을 사용할때 Selective search를 사용했는데, 이것은 하나의 모듈로서 사용하였고, CPU에서 돌아가므로 속도가 상당히 느렸다. 프로세싱 타임 2.3초중 2초가 Region proposal에 사용되었다고 한다. 그래서 Bottle neck(병목현상)이 발생하여 비효율적이었다.  
 이부분에 Faster R-CNN에서는 Region proposal을 외부 모듈에서 사용하는것이 아니라 하나의 Region proposal을 위한 Network를 만들었고(이하 RPN), 이것을 통해 GPU에 연산을 시켜 빠른 연산속도를 이뤄냈다.  
-![image](https://user-images.githubusercontent.com/88817336/150631660-a3c730c9-63b9-448f-93ab-4dd83f93219b.png)  
+![image](https://user-images.githubusercontent.com/88817336/150667961-425c1000-2ca9-46a0-9040-a21ffd68d74e.png)  
 위의 사진으로 구조를 볼수있는데, Fast R-CNN이랑 RPN의 유무 빼고 모두 같다.  
 RPN의 결과와 feature의 결과를 투영시켜 똑같이 결과를 내는대에는 똑같다.  
-RPN의 구조와 학습방법은 
+#### Contribution 2  
+RPN에서 Region proposal의 방법이 기존의 Selective search랑 방법이 다른데, CNN에서 나온 feature의 수만큼 다양한 Anchor box를 만들어 (feature는 원본이미지의 압축버전이라고 생각하면 편하다)
+![image](https://user-images.githubusercontent.com/88817336/150667909-75660e76-74f5-444d-9dec-b81eb4f5fcbe.png)  
+다양한 크기의 물체를 찾을수 있도록 했다. 8x8 의 feature가 만들어졌다면, 각 1개의 feature마다 9개의 Anchor를 넣어 다양한 크기의 물체를 찾으며 feature를 여러개 선택하여 큰 물체도 찾을수있다.  
+![image](https://user-images.githubusercontent.com/88817336/150667939-c37f4fc5-7668-4443-91e5-c0d7ebad1be6.png)  
+
+---
+
+
+
 
 
 
