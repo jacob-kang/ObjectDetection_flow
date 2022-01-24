@@ -120,6 +120,8 @@ RPN에서 Region proposal의 방법이 기존의 Selective search랑 방법이 �
 
 ---
 
+* ### Feature Pyramid Network
+_Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017._  
 
 
 
