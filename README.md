@@ -121,9 +121,36 @@ RPN에서 Region proposal의 방법이 기존의 Selective search랑 방법이 �
 ---
 
 * ### Feature Pyramid Network
-_Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017._  
+_Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017._   
+   
+Object detection의 큰 문제는 작은물체를 탐지하기 어렵다는것이다. 물론 사람도 당연히 찾기 어렵지만, 생각보다 큰것도 잘 못찾는경우가 많다.  
+이를 위해 다양한 연구가 이루어졌는데,   
+![image](https://user-images.githubusercontent.com/88817336/151366610-83d001f7-aac4-426a-8e58-e2a48eb711ab.png)   
+위의 이미지는 FPN이 이루어지기 전에 이루어졌던 대표적인 방법들이다.   
+__(a)__ 같은경우 입력 이미지 자체를 다양한 크기로 resize후 각 이미지에서 물체를 찾는방법이다.  resize를 하게되면 기준 anchor로 sliding window처럼 처음부터 끝까지 찾을때 작은 물체도 잘 찾을수 있게된다. 상당히 직관적이고 간단한방법.  
+문제는 여러 사이즈를 만들다보니 많은 memory를 소요하게 되며, sliding window처럼 처음부터 끝까지 훑으므로 여러번의 연산을 해야해서 상당히 큰 computing power가 소요된다. 즉, 비효율적.  
+관련 연구로서는 _Zhang, Kaipeng, et al. "Joint face detection and alignment using multitask cascaded convolutional networks." IEEE Signal Processing Letters 23.10 (2016): 1499-1503._ 가 있다.
+</br>
+__(b)__ 같은경우 우리가 알고있는 일반적인 CNN을 활용한 느낌이다. CNN을 돌려 나온 최종 단계의 feature로 object detection을 수행하는 방법.   
+문제점은 CNN은 보통 Convolution -> pooling의 반복으로 점점 width, height는 줄어들면서 channel이 깊어지게 된다.   
+이미지를 점점 추상화해서 저장하게되는것인데 그렇게되면 작은 이미지같은경우 짜잘한 노이즈와 같이 소멸될 확률이 높아진다.  
+또한, Backbone모델의 영향을 많이 받게되므로, 모델의 중요성이 더 크다고 볼수있다.  
+관련 연구로서는 그 이름도 유명한 YOLO다.   
+_Redmon, Joseph, et al. "You only look once: Unified, real-time object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016._  
+</br>
+__(c)__ 같은경우 조금더 머리를 쓴 방법인데, Covolutional layer를 통과하면서 나온 각 feature들마다 predict를 돌리는방법이다.  
+즉, 변하는 과정을 모두다 저장하여 그것들에 대해 predict를 하겠다는 뜻.  
+SSD는 1 stage detection으로서 상당히 빠르고 좋으며 Yolo보다 더 작은것을 잘찾는다.  
+![image](https://user-images.githubusercontent.com/88817336/151375176-5afe5452-6b03-41d2-9235-e0449e8eae61.png)   
+(SSD와 YOLO 구조 차이 사진)  
+__(d)__ 가 Feature pyramid network의 방법이다.  
+(c)의 방법도 있으나, 다른 방법으로 접근한것이 (d)의 방법.  
+![image](https://user-images.githubusercontent.com/88817336/151378180-5738b027-d984-4237-afb4-6caeb32740d5.png)  
 
+방법은 간단한데, feature를 추출할수록 일정하게 feature의 사이즈가 줄어드는데, 그 줄어든만큼 feature에 곱해주어 보관한다음, 마지막 feature까지 추출이 되면 마지막 feature도 원래 이미지 크기만큼 업샘플링하여 보관한 사진들을 전부 더한다.   
+![image](https://user-images.githubusercontent.com/88817336/151378220-bac2bdee-afbd-4bae-b161-ef957c36388d.png)  
+(업샘플링 사진)
 
-
-
+그러면 각 feature들의 정보를 전부다 더한 하나의 이미지가 만들어지고 그것에 detection을 돌리는 방법.  
+feature의 정보들을 모두다 버리지도 않으면서, 업샘플링을 해서 원래 크기의 이미지를 만들어 detection을 돌리게되어 성능이 잘나온다.  
 
