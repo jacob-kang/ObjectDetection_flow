@@ -97,8 +97,19 @@ So It does CNN only one time. therfore the speed is faster than R-CNN
 
 * ### Fast R-CNN  
 _Girshick, Ross. "Fast r-cnn." Proceedings of the IEEE international conference on computer vision. 2015._  
-이름도 유명한 Fast R-CNN이다. 좀 이해하기가 어렵고 상당히... 어렵다.  
+This is the very famous Fast R-CNN. This paper is tough for me...  
+  
 #### Contribution 1  
+Fast R-CNN is like SPP-Net in part of doing CNN first.  
+But the problem is sometime SPP-Net proposes wrong regions.  
+Because after CNN, the feature contains compressed informations. but sometimes after CNN, There are some useless features.  
+So in this paper, The author aim to take the original images and CNN feature at the same time.  
+The procedure like below.  
+1. Do region proposals to original input image in one side.  
+2. And in the other side, Do CNN and get features.
+3. After get proposed region, project the region onto features. (So you can use region propsal data, and feature map data.)  
+4. Devide selected area into 4 parts and do pooling every parts.  
+5. Then you can get fixed length vector for fc layer.  
 ![image](https://user-images.githubusercontent.com/88817336/150491907-a70dd7b5-49c1-4894-95d7-b7251e336b47.png)  
 Fast R-CNN은 SPP-Net과 똑같이 Input 이미지에 바로 CNN을 돌리는것은 똑같다.  
 차이점은 SPP-Net에서는 일부 feature에서의 Region proposal이 이상한 결과를 가져오게된다.  
