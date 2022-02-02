@@ -31,17 +31,19 @@ it discerns well like above pircutre.
 * ### Selective Search for Object Recognition  
 _Uijlings, Jasper RR, et al. "Selective search for object recognition." International journal of computer vision 104.2 (2013): 154-171._  
 </br>
-이 논문은 Object detection에 많은 영향을 미친 논문인데,  
-그 당시에 Sliding window와 Selective search 2개가 detection부분에서 붐이었다.  
+This paper hugely affected object detection.  
+At the time before the paper, Sliding window (Exhaustive Search) was best in the area of detection.  
+This paper is to make region proposal algorithm be easier and efficiency.  
 ![image](https://user-images.githubusercontent.com/88817336/150456270-11a80118-6af4-466b-b9fd-56d917833611.png)  
 </br>
-위 사진처럼 (b)는 같은 질감이지만 다른 색상으로 구분하고, (c)는 같은 색상이지만 다른 질감으로 구분하며, (d)는 색상, 질감이 전부 다르지만 자동차에 있는 일부분이므로 자동차로 구분된다. (타이어빼고 차체만 자동차라 할수는 없으니) (a)에 관한 얘기는 책상의 범위를 어디까지 볼것인지에 대해 얘기한다. 그릇하고 그릇안에 있는 숟가락(?)같은것도 책상을 segmentation할때 포함해야하는지 말아야 하는지에 대해..(사실 이부분은 왜있는지 잘모르겠음)  
-Selective search는 _Efficient Graph-Based Image Segmentation_ 를 기초로 사용되는 기술이다.  
-문제는 (b),(c)처럼 저런 부분에서는 단순히 색상이나 혹은 단순한 방법으로 detection하기가 쉽지않다는것임. 따라서 이 논문에서 Selective search를 고안함.  
-방법은 아래와 같은데  
-1. 우선 _Efficient Graph-Based Image Segmentation_ 를 사용하여 2000개의 초기영역을 추출  
-2. 탐욕 알고리즘을 사용하여, 여러 추출한 영역중 유사도를 추출하여 가장 비슷한 영역을 골라 통합시킴.  
-3. 통합된 영역을 바탕으로 후보영역을 만들어 냄.  
+Like this picture, (b) the cats can be distinguished by colors although it has same texture, (c) chemelon can be distinguished from background by texture, (d) the wheel can be distinguished as a car although it is surrounded by car and it has different color, texture.  
+(a) is about what area is table. there are dishes, sppon where is in bowl on table. the question is like "do we detect the table w/out spoon, dishes or not?". (to be honest, I'm not sure I cathced it right. XD)  
+Anyway, the author of this paper mentioned that these should be not judged by only one but judged comprehensive things such as arrangement, situation(?).  
+So in this paper, the author suggested __Selective search__.  
+The procedure is like below,  
+1. first of all, by using _Efficient Graph-Based Image Segmentation_, export 2000 initial areas.
+2. by using greedy algorithm, combine similar area by checking similarity of area.
+3. with combined area, make proposal area.
 
 ![image](https://user-images.githubusercontent.com/88817336/150485838-6f4b3e02-fee9-458c-8fd8-0320ec2532dd.png)
 
