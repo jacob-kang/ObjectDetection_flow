@@ -54,14 +54,14 @@ The procedure is like below,
 _Girshick, Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation." Proceedings of the IEEE conference on computer vision and pattern recognition. 2014._  
 To examinate this R-CNN, I wrote down those over papers.  
 R-CNN is Regiop proposal + CNN. So it's named as R-CNN.  
-
-
-#### Contribution 1  
-R-CNN은 Region proposal + CNN이라 R-CNN이다. Object detection을 사용할때 물체가 있을법한 위치에 CNN을 돌리는방법.  
-R-CNN은 입력 영상에 Selective search를 이용하여 Region proposal을 하고, 그 후보들에 전부다 CNN을 돌려 결과를 내는방법.  
+Like the name, In this paper, the author suggested a fusion of Region proposal + CNN.  
+The procedure is like below.  
+1. Do Selective search to input image.  
+2. after selective search, There are almost 2000 proposals. and do CNN to the all propsals.  
+3. Do SVM for classification and at the same time, Do regression for Bbox.
 ![image](https://user-images.githubusercontent.com/88817336/150487156-0c8c25ec-3a99-43e2-a4e1-16f57d9bc95c.png)  
-위의 그림에서 사진을 넣고 전부다 CNN을 돌려 나온 결과로 SVM은 Classification을 하고, Bbox regression을해 박스위치를 수정한다.  
-![image](https://user-images.githubusercontent.com/88817336/150487408-c44fbaf7-d151-4134-9fa8-c9848f3d40c5.png)
+![image](https://user-images.githubusercontent.com/88817336/150487408-c44fbaf7-d151-4134-9fa8-c9848f3d40c5.png)  
+As you can notice, This costs huge computational power.  
 
 ---
 
