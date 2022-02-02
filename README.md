@@ -4,12 +4,14 @@ The flow is from top to bottom and it is configured with my paper understanding 
 There __may__ be misunderstanding or typo or etc.  
 _Made by Jacob Jisu Kang._  
 
----
+Note. this Read me skips some basic knowledges such as Perceptron, FFNN, Backpropagation etc.  
 
-CNN이 세상에 알려지며 object classificaiton과 object detection의 관심이 늘어남.  
-하지만 CNN을 사용하여 object detection을 하는것은 여전히 어려움.  
+---  
+In 1989, CNN came out in the world. before CNN, People still made lots of effort to solve object classifcaiton, object detection.  
+CNN made those hard problems be easy to solve or apporach. __But__ Still hard.  
+So There were numerous papers to approach those hard problem with CNN.  
+Let's explore it.  
 </br>
-
 * ### Efficient Graph-Based Image Segmentation  
 _Felzenszwalb, Pedro F., and Daniel P. Huttenlocher. "Efficient graph-based image segmentation." International journal of computer vision 59.2 (2004): 167-181._  
 </br>
