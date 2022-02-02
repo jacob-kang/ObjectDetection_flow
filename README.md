@@ -1,7 +1,8 @@
-# Catching_deep_learning_history
-이 Read Me는 Object detection의 흐름을 잡기위해 정리해둔것이다.  
-위에서 부터 아래로 관련 연구들과 순서들이고, 논문 원본 해석 + 논문 리뷰 정리 + 자의적 해석으로 오역/잘못이해 된 부분이 있을수있다.  
-_Made by Jacob Jisu Kang._
+# Obeject detection papers
+This Read Me is for catching object detection flow.  
+The flow is from top to bottom, it is configured with my paper understanding + information from some blogs.  
+There __may__ be misunderstanding or typo or etc.  
+_Made by Jacob Jisu Kang._  
 
 ---
 
