@@ -79,20 +79,18 @@ Due to these situations, Our model trained something wierd.
   
 In this paper, the author aimed to solve fiex input size problem.  
 The method was to insert SPP-Net before fc layer. 
-
-
-즉, 이게 시사하는 바는 fc layer에 전달할때만 잘 전달하면 되는것이지 이미지의 input size를 맞추기 위해 절삭하거나 비율을 꾸겨 가며 왜곡된 이미지를 넣을 필요는 없다는 것임.  
-</br>
-SPP-Net은 fc layer이전에 spartial pyramid pooling을 추가하여 고정된 size를 확보하여 fc layer의 input에 문제가 없도록 하게하는것임.  
 ![image](https://user-images.githubusercontent.com/88817336/150489203-6ca68824-77c3-439e-85eb-b5ddb939fe58.png)  
-고정된 크기의 사이즈로 만들기 위해 사이즈에 맞춰서 그리드를 나눠 Max pooling을 진행함. 그 과정은 아래의 그림과 같다.  
+SPP-Net is before fc layer and it makes input feature of SPP-Net have fixed size after Maxpooling.  
 ![image](https://user-images.githubusercontent.com/88817336/150489245-9cb4f476-c613-4918-a7a5-dc74a2883d4e.png)  
+This is the image of SPP-Net. SPP-Net diveds features in to 1,2,4 grids and do maxppoling.  
+Then, you can get fixed length vector.  
 
 #### Contribution 2  
-R-CNN은 Region proposal을 하여 2000개의 위치를 proposal받고, 그 각 위치에 CNN을 돌리게된다. 문제는 2000번의 CNN을 하기때문에 test에도 엄청나게 느린속도와 많은 메모리를 소요하게됨.  
-SPP-Net은 이부분에 집중하여 Input 이미지에 CNN을 돌리고 각 추출된 feature들에 대해 region proposal을 하게된다.   
-추출된 feature들은 사이즈가 작고 가벼우므로 region proposal의 속도가 빠르다.  
-SPP-Net은 기존 R-CNN의 2000번의 CNN에 비해 1번의 CNN만 돌려 속도를 높혔다.  
+R-CNN does CNN to all the proposals after region proposals (Selective search). So it is too slow and consumes big memory.  
+The author also focused on this problem.  
+So The author suggested that do CNN first not after region proposal.  
+This idea is... quite simple. After CNN, There are features. and those are integration of input image. (base on CNN definition)  
+So It does CNN only one time. therfore the speed is faster than R-CNN
 ![image](https://user-images.githubusercontent.com/88817336/150490393-3806d83e-76cb-47f7-b5b3-864728ebf0aa.png)  
 
 ---
