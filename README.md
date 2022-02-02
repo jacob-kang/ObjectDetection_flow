@@ -33,7 +33,8 @@ _Uijlings, Jasper RR, et al. "Selective search for object recognition." Internat
 </br>
 This paper hugely affected object detection.  
 At the time before the paper, Sliding window (Exhaustive Search) was best in the area of detection.  
-This paper is to make region proposal algorithm be easier and efficiency.  
+But Sliding window a.k.a. Exhaustive Search costs big computation power and takes long time.  
+So this paper aimed to make region proposal algorithm be easier and efficiency. 
 ![image](https://user-images.githubusercontent.com/88817336/150456270-11a80118-6af4-466b-b9fd-56d917833611.png)  
 </br>
 Like this picture, (b) the cats can be distinguished by colors although it has same texture, (c) chemelon can be distinguished from background by texture, (d) the wheel can be distinguished as a car although it is surrounded by car and it has different color, texture.  
@@ -51,6 +52,10 @@ The procedure is like below,
 
 * ### R-CNN   
 _Girshick, Ross, et al. "Rich feature hierarchies for accurate object detection and semantic segmentation." Proceedings of the IEEE conference on computer vision and pattern recognition. 2014._  
+To examinate this R-CNN, I wrote down those over papers.  
+R-CNN is Regiop proposal + CNN. So it's named as R-CNN.  
+
+
 #### Contribution 1  
 R-CNN은 Region proposal + CNN이라 R-CNN이다. Object detection을 사용할때 물체가 있을법한 위치에 CNN을 돌리는방법.  
 R-CNN은 입력 영상에 Selective search를 이용하여 Region proposal을 하고, 그 후보들에 전부다 CNN을 돌려 결과를 내는방법.  
