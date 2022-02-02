@@ -21,10 +21,10 @@ The method is quite simple. It is to compare the minimum value of the similarity
 </br>
 ![image](https://user-images.githubusercontent.com/88817336/150452711-35bbc2b3-c1c1-4e04-86a0-c2283b612e13.png)
 </br>
-위의 사진처럼 인접한 두개 영역의 유사도는 같아서 최소값또한 높은데, 그럼에도 불구하고 멀리있는 영역의 유사도의 최대값보다 작다면, 같은영역으로 판별하는것이다.  
-간단한 알고리즘으로  
+Like above picture, The near area similaritys are high because they are literally near. Nevertheless, If near area similaritys are smaller than far area similarity, then it deems same area.  
+With this simple algorithm,   
 ![image](https://user-images.githubusercontent.com/88817336/150453015-354f0261-4915-49d8-9d3b-58518cfee509.png)  
-위와 같이 잘 판별해 낸다.  
+it discerns well like above pircutre.  
 
 ---
 
