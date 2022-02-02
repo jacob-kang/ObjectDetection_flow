@@ -67,10 +67,19 @@ As you can notice, This costs huge computational power.
 
 * ### SPP-Net  
 _He, Kaiming, et al. "Spatial pyramid pooling in deep convolutional networks for visual recognition." IEEE transactions on pattern analysis and machine intelligence 37.9 (2015): 1904-1916._  
+  
 #### Contribution 1  
-R-CNN에서는 몇가지 문제가 있는데, 제일 큰 문제는 Input size가 고정이 되어있다는것이다.  
-그 이유는 어떠한 이미지를 집어넣고 CNN을 통해 featrue extract를 하고 그 결과들을 바탕으로 마지막에 fully connected layer(fc layer)에 전달하게되는데 (이건 그냥 간단히 ANN임.) fully connected layer부분에는 input size와 outp size가 고정되어있음.  
+There are a few problems on R-CNN, The biggest problem was the input size is fiexed.  
+Becuase after CNN, there are features map and those are influenced by input size. The bigger size the more featrues.  
+And as we know, after Convolutional layer, there are fully connected layer (fc layer). And those fc layer have to take fixed size.  
+So, before this paper, We must keep the specific size for input image.  
+What if our image like below?
 ![image](https://user-images.githubusercontent.com/88817336/150489131-93bdb07b-e732-43aa-9bf3-4b2e3df5fc1a.png)  
+Due to these situations, Our model trained something wierd.  
+  
+In this paper, the author aimed to solve fiex input size problem.  
+The method was to insert SPP-Net before fc layer. 
+
 
 즉, 이게 시사하는 바는 fc layer에 전달할때만 잘 전달하면 되는것이지 이미지의 input size를 맞추기 위해 절삭하거나 비율을 꾸겨 가며 왜곡된 이미지를 넣을 필요는 없다는 것임.  
 </br>
