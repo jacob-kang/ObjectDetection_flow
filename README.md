@@ -15,8 +15,8 @@ Let's explore it.
 * ### Efficient Graph-Based Image Segmentation  
 _Felzenszwalb, Pedro F., and Daniel P. Huttenlocher. "Efficient graph-based image segmentation." International journal of computer vision 59.2 (2004): 167-181._  
 </br>
-이 논문은 그래프 이론을 바탕으로 Image segmentaion을 하는방법을 고안함.  
-방법은 상당히 간단한데, 인접한 두개 영역의 유사도의 최소값과 멀리있는 두개의 영역의 유사도의 최대값을 비교하는것임.  
+This paper talks about Image segmentation based on Graph theory.  
+The method is quite simple. It is to compare the minimum value of the similarity of two near regions with the maximum value of the similarity of two far regions.  
 ![image](https://user-images.githubusercontent.com/88817336/150452600-b13486d4-6faf-4c40-90d5-a0de06d48134.png)
 </br>
 ![image](https://user-images.githubusercontent.com/88817336/150452711-35bbc2b3-c1c1-4e04-86a0-c2283b612e13.png)
