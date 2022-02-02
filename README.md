@@ -1,6 +1,6 @@
 # Obeject detection papers
 This Read Me is for catching object detection flow.  
-The flow is from top to bottom, it is configured with my paper understanding + information from some blogs.  
+The flow is from top to bottom and it is configured with my paper understanding + some informations from blogs.  
 There __may__ be misunderstanding or typo or etc.  
 _Made by Jacob Jisu Kang._  
 
