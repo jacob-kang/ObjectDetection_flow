@@ -196,11 +196,19 @@ Understanding...
 
 * ### SE-Net (Squeeze and Excitation)  
 _ Hu, Jie, Li Shen, and Gang Sun. "Squeeze-and-excitation networks." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018. _  
+</br>
 Note : From this, It may different flow from above. Because, I'm currently studying USV project. and previous research in USV, there was SE-Net. So I decieded to study SE-Net and now review here.  
+</br>
 This SE-Net is from attention mechanism. Briefly to say, The attention mechanism is from NLP like when NLP needs to focus some special words. (I would skip describing the attetntion mechanism.)  
 Anyway, The attention mechasim came to computer vision from NLP. And the mechanism is quite simple but powerful.  
-The motivation is (I guess) when we see a image, We tend to focus on somthing importance or interesting. That means there could be importance part in image.  
+The motivation is (I guess) when we see an image, We tend to focus on somthing importance or interesting. That means there could be importance part in image.  
 The author who write this paper focused on this.  
-
-![image](https://user-images.githubusercontent.com/88817336/152290151-52ac6e60-0e83-415e-9b5e-86b75ef06f72.png)
-Above the image, 
+</br>
+![image](https://user-images.githubusercontent.com/88817336/152290151-52ac6e60-0e83-415e-9b5e-86b75ef06f72.png)   
+Like the image, There are importance priorities among featrues. and SE-Net sets the weight of each features.  
+The procedure is like below.  
+1. Do CNN.  
+2. Add featrues that come out from CNN to SE-Net.  
+3. The feature forms is probably H X W X C. and need to convert 1 X 1 X C. Due to ranking those feature, The feature forms should be vector.  
+4. Convert H X W X C feature to 1 X 1 X C by Global average pooling.  
+5. 
