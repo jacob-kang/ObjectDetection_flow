@@ -124,7 +124,9 @@ CNN으로 나온 feature에 Region proposal에서 나온 결과 위치를 투영
 위의 이미지를 예시로 들면, 강아지 위치는 왼쪽 아래인데 그 위치를 그대로 feature 사이즈에 맞춰서 featrue에서 그 위치를 잘라 Max pooling을 하여 2x2의 사이즈를 확보한다.  
 이런식으로 하게되면 fc layer에 들어가는 input을 조정할수 있다.  
 </br>
+
 #### Contribution 2  
+
 SPP-Net의 문제점은 multi-stage pipeline이라는것이다. 따라서 결과를 여러 과정을 거쳐서 Real-time으로서 무겁다.  
 SPP-Net은 CNN이후 SVM과 bbox regression를 이용하는데, 이것들을 통채로 한꺼번에 학습이 되지않는다. CNN이후 하나는 SVM 하나는 regression으로 서로 다른모델이기때문.  
 Fast R-CNN은 그 모든것들을 multitask loss로 한꺼번에 뭉쳐서 사용하였다. ROI영역을 feature영역에 투영하여 동일한 데이터로 각각 softmax, regression에 들어가므로 연산을 공유해서 end-to-end로서 학습이 가능하다는 의미.     
