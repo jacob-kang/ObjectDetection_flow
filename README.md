@@ -193,7 +193,7 @@ This is the picture what I wrote.
 </br>  
 The upsamling mehtod is like below. Neares Neighbor. There are many method to upsample image. but The author said he just choosed the way as it is simple.  
 ![image](https://user-images.githubusercontent.com/88817336/151378220-bac2bdee-afbd-4bae-b161-ef957c36388d.png)  
-(업샘플링 사진)
+(Upsampling method)
 
 ---
 
