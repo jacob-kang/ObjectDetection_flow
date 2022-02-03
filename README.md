@@ -114,33 +114,33 @@ The procedure like below.
 4. Devide selected area into 4 parts and do pooling every parts.  
 5. Then you can get fixed length vector for fc layer.  
 ![image](https://user-images.githubusercontent.com/88817336/150492142-3a2de41a-5ebf-4da2-9955-cc94743a78b0.png)  
-![image](https://user-images.githubusercontent.com/88817336/150491907-a70dd7b5-49c1-4894-95d7-b7251e336b47.png)  
-Fast R-CNN은 SPP-Net과 똑같이 Input 이미지에 바로 CNN을 돌리는것은 똑같다.  
-차이점은 SPP-Net에서는 일부 feature에서의 Region proposal이 이상한 결과를 가져오게된다.  
-따라서 좀더 확실하게 바로 input 이미지를 바로 Region proposal을 돌리고 그 결과를 feature에 투영하여 찾는방법을 고안한것이다.  
-ROI (=Region proposal을 통해 나온 각 영역들)을 통해 유연하게 fc layer로 넘겨주는게 가능해진것이다.  
-방법은 Input 이미지를 한쪽에서는 Region proposal을 돌리고, 나머지 하나는 CNN으로 돌린다.  
-CNN으로 나온 feature에 Region proposal에서 나온 결과 위치를 투영시킨다.  
-
-위의 이미지를 예시로 들면, 강아지 위치는 왼쪽 아래인데 그 위치를 그대로 feature 사이즈에 맞춰서 featrue에서 그 위치를 잘라 Max pooling을 하여 2x2의 사이즈를 확보한다.  
-이런식으로 하게되면 fc layer에 들어가는 input을 조정할수 있다.  
+</br>
+For instance, let's assume that out input image is a dog.  
+First, Do region proposal (Selective search etc.) to the image and the region proposal is the result.  
+Second (At the same time), Do CNN with VGG backbone to the image and the features comes out as results.  
+Third, You can guess (know?) the area of proposal in featre approximately (in case of just watching). then project the proposal area to feature map.  
+Last, Divide projected area into 4 parts and do pooling. Then you get the 2 X 2 size feature!  
 </br>
 
 #### Contribution 2  
 
-SPP-Net의 문제점은 multi-stage pipeline이라는것이다. 따라서 결과를 여러 과정을 거쳐서 Real-time으로서 무겁다.  
-SPP-Net은 CNN이후 SVM과 bbox regression를 이용하는데, 이것들을 통채로 한꺼번에 학습이 되지않는다. CNN이후 하나는 SVM 하나는 regression으로 서로 다른모델이기때문.  
-Fast R-CNN은 그 모든것들을 multitask loss로 한꺼번에 뭉쳐서 사용하였다. ROI영역을 feature영역에 투영하여 동일한 데이터로 각각 softmax, regression에 들어가므로 연산을 공유해서 end-to-end로서 학습이 가능하다는 의미.     
+The problem of SPP-Net is multi-stage pipeline. That means SPP-Net needs to do at least 2 stage compuational operation for making a result. so, This is overheavy.  
+SPP-Net does SVM, Bbox regression after CNN. But, unfortunately, These are not trained altogether since SVM, Regression are differnt models after CNN.  
+The author focused on this probelm. So he suggested that Fast R-CNN make SVM, Regression be a multitask loss.  
+After pooling, The features are used for SVM, Regression at the same time. So it is shared and could be end-to-end learnable.  
 ![image](https://user-images.githubusercontent.com/88817336/150493542-1ca033e9-bf57-40c3-90b5-9fb1e46dcf87.png)  
-위 이미지는 Classification과 localization의 loss를 합친것이고, 학습이 가능하여 약간의 정확도와 빠른속도를 확보하였다.  
+This image is multi-task loss fomula. (But, I'm bad at Math. XD)
 
 ---
 
 * ### Faster R-CNN  
 _Ren, Shaoqing, et al. "Faster r-cnn: Towards real-time object detection with region proposal networks." Advances in neural information processing systems 28 (2015): 91-99._  
-이 논문에서부터는 짜잘한 테크닉이 많이나오는데, 분명 중요하지만 이해하기가 상당히 어렵다.  
-Faster R-CNN은 Fast R-CNN의 일부 문제들을 다른시선으로 바라본것같다.  
+</br>
+In this paper, There would be small but powerful technique. For me, It is hard...  
+In my think, Faster R-CNN looks at the problems with different perspective from Fast R-CNN.  
+</br>
 #### Contribution 1  
+
 이전 Fast R-CNN의 문제점은 Region proposal을 사용할때 Selective search를 사용했는데, 이것은 하나의 모듈로서 사용하였고, CPU에서 돌아가므로 속도가 상당히 느렸다. 프로세싱 타임 2.3초중 2초가 Region proposal에 사용되었다고 한다. 그래서 Bottle neck(병목현상)이 발생하여 비효율적이었다.  
 이부분에 Faster R-CNN에서는 Region proposal을 외부 모듈에서 사용하는것이 아니라 하나의 Region proposal을 위한 Network를 만들었고(이하 RPN), 이것을 통해 GPU에 연산을 시켜 빠른 연산속도를 이뤄냈다.  
 ![image](https://user-images.githubusercontent.com/88817336/150667961-425c1000-2ca9-46a0-9040-a21ffd68d74e.png)  
