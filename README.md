@@ -176,13 +176,15 @@ And since it is affected from backbone model a lot, It is more likely that the m
 The relate work is ,the very famous, YOLO.  
 _Redmon, Joseph, et al. "You only look once: Unified, real-time object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016._  
 </br>  
-__(c)__ 같은경우 조금더 머리를 쓴 방법인데, Covolutional layer를 통과하면서 나온 각 feature들마다 predict를 돌리는방법이다.  
-즉, 변하는 과정을 모두다 저장하여 그것들에 대해 predict를 하겠다는 뜻.  
-SSD는 1 stage detection으로서 상당히 빠르고 좋으며 Yolo보다 더 작은것을 잘찾는다.  
+In case of __(c)__ , This is smarter(?)way which is to predict every single feature after Convolutional layers.  
+That is, It saves all the changing process then predict to those. (Is it what I describe correctly?? Oh my English...)  
+Single Shot multibox Detector (SSD) uses this structure.  
+SSD is 1 stage detection as well. it is quite fast and good at looking for small object than YOLO.  
 ![image](https://user-images.githubusercontent.com/88817336/151375176-5afe5452-6b03-41d2-9235-e0449e8eae61.png)   
-(SSD와 YOLO 구조 차이 사진)  
-__(d)__ 가 Feature pyramid network의 방법이다.  
-(c)의 방법도 있으나, 다른 방법으로 접근한것이 (d)의 방법.  
+(The image of structure of SSD, YOLO)  
+_Liu, Wei, et al. "Ssd: Single shot multibox detector." European conference on computer vision. Springer, Cham, 2016._  
+</br>  
+And Last. __(d)__ is the method of Feature Pyramid Network.  
 ![image](https://user-images.githubusercontent.com/88817336/151378180-5738b027-d984-4237-afb4-6caeb32740d5.png)  
 
 방법은 간단한데, feature를 추출할수록 일정하게 feature의 사이즈가 줄어드는데, 그 줄어든만큼 feature에 곱해주어 보관한다음, 마지막 feature까지 추출이 되면 마지막 feature도 원래 이미지 크기만큼 업샘플링하여 보관한 사진들을 전부 더한다.   
