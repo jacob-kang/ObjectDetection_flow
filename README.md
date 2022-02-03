@@ -115,7 +115,7 @@ The procedure like below.
 5. Then you can get fixed length vector for fc layer.  
 ![image](https://user-images.githubusercontent.com/88817336/150492142-3a2de41a-5ebf-4da2-9955-cc94743a78b0.png)  
 </br>
-For instance, let's assume that out input image is a dog.  
+For instance, let's assume that input image is a dog.  
 First, Do region proposal (Selective search etc.) to the image and the region proposal is the result.  
 Second (At the same time), Do CNN with VGG backbone to the image and the features comes out as results.  
 Third, You can guess (know?) the area of proposal in featre approximately (in case of just watching). then project the proposal area to feature map.  
@@ -159,14 +159,14 @@ Let's assume that there is 8 X 8 feature. by inserting 9 anchors to each single 
 
 * ### Feature Pyramid Network
 _Lin, Tsung-Yi, et al. "Feature pyramid networks for object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017._   
-   
-Object detection의 큰 문제는 작은물체를 탐지하기 어렵다는것이다. 물론 사람도 당연히 찾기 어렵지만, 생각보다 큰것도 잘 못찾는경우가 많다.  
-이를 위해 다양한 연구가 이루어졌는데,   
+</br>
+One of the biggest problems in object detection is to detect small objects. Of course, It is hard for human. Nevertheless it is big in our thing, models often don't find.  
+There are various researches for this,  
 ![image](https://user-images.githubusercontent.com/88817336/151366610-83d001f7-aac4-426a-8e58-e2a48eb711ab.png)   
-위의 이미지는 FPN이 이루어지기 전에 이루어졌던 대표적인 방법들이다.   
-__(a)__ 같은경우 입력 이미지 자체를 다양한 크기로 resize후 각 이미지에서 물체를 찾는방법이다.  resize를 하게되면 기준 anchor로 sliding window처럼 처음부터 끝까지 찾을때 작은 물체도 잘 찾을수 있게된다. 상당히 직관적이고 간단한방법.  
-문제는 여러 사이즈를 만들다보니 많은 memory를 소요하게 되며, sliding window처럼 처음부터 끝까지 훑으므로 여러번의 연산을 해야해서 상당히 큰 computing power가 소요된다. 즉, 비효율적.  
-관련 연구로서는 _Zhang, Kaipeng, et al. "Joint face detection and alignment using multitask cascaded convolutional networks." IEEE Signal Processing Letters 23.10 (2016): 1499-1503._ 가 있다.
+This image shows some representative reseraches.  
+In case of __(a)__ , This is to find objects by resizing the input images into various size. After resizng, It is easy to find small objects with anchor box by use of sliding window which finds from start to end. This is quite eidetic and simple.  
+But the problem is making various size images cost much memory and like the way sliding window, it operates too many times. Therefore it costs numerous comuting power. A.K.A. inefficient.  
+The relate work is  _Zhang, Kaipeng, et al. "Joint face detection and alignment using multitask cascaded convolutional networks." IEEE Signal Processing Letters 23.10 (2016): 1499-1503._ 
 </br>
 __(b)__ 같은경우 우리가 알고있는 일반적인 CNN을 활용한 느낌이다. CNN을 돌려 나온 최종 단계의 feature로 object detection을 수행하는 방법.   
 문제점은 CNN은 보통 Convolution -> pooling의 반복으로 점점 width, height는 줄어들면서 channel이 깊어지게 된다.   
