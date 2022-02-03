@@ -185,3 +185,22 @@ __(d)__ 가 Feature pyramid network의 방법이다.
 그러면 각 feature들의 정보를 전부다 더한 하나의 이미지가 만들어지고 그것에 detection을 돌리는 방법.  
 feature의 정보들을 모두다 버리지도 않으면서, 업샘플링을 해서 원래 크기의 이미지를 만들어 detection을 돌리게되어 성능이 잘나온다.  
 
+---
+
+* ### Cascade R-CNN  
+_ Cai, Zhaowei, and Nuno Vasconcelos. "Cascade r-cnn: Delving into high quality object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018. _  
+
+Understanding...   
+
+---
+
+* ### SE-Net (Squeeze and Excitation)  
+_ Hu, Jie, Li Shen, and Gang Sun. "Squeeze-and-excitation networks." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018. _  
+Note : From this, It may different flow from above. Because, I'm currently studying USV project. and previous research in USV, there was SE-Net. So I decieded to study SE-Net and now review here.  
+This SE-Net is from attention mechanism. Briefly to say, The attention mechanism is from NLP like when NLP needs to focus some special words. (I would skip describing the attetntion mechanism.)  
+Anyway, The attention mechasim came to computer vision from NLP. And the mechanism is quite simple but powerful.  
+The motivation is (I guess) when we see a image, We tend to focus on somthing importance or interesting. That means there could be importance part in image.  
+The author who write this paper focused on this.  
+
+![image](https://user-images.githubusercontent.com/88817336/152290151-52ac6e60-0e83-415e-9b5e-86b75ef06f72.png)
+Above the image, 
