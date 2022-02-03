@@ -142,15 +142,17 @@ In my think, Faster R-CNN looks at the problems with different perspective from 
 #### Contribution 1  
 One of the problem of R-CNN is when it uses Selective search as Region proposal, The Selective search is used as an external modlue. Since it is an external, it is loaded on CPU. Therefore the speed was slow. For example, during the inference time 2.3 seconds, the 2 seconds was used for Region proposal. And the rest 0.3 seconds used for CNN.  
 As it leads Bottle neck, it is highly inefficient.  
-이전 Fast R-CNN의 문제점은 Region proposal을 사용할때 Selective search를 사용했는데, 이것은 하나의 모듈로서 사용하였고, CPU에서 돌아가므로 속도가 상당히 느렸다. 프로세싱 타임 2.3초중 2초가 Region proposal에 사용되었다고 한다. 그래서 Bottle neck(병목현상)이 발생하여 비효율적이었다.  
-이부분에 Faster R-CNN에서는 Region proposal을 외부 모듈에서 사용하는것이 아니라 하나의 Region proposal을 위한 Network를 만들었고(이하 RPN), 이것을 통해 GPU에 연산을 시켜 빠른 연산속도를 이뤄냈다.  
+For this problems, Faster R-CNN uses Region proposal not from external module but its own network that is made as a new region proposal(RPN).  
+With RPN, It is available to use GPU computing and makes high speed openration.  
 ![image](https://user-images.githubusercontent.com/88817336/150667961-425c1000-2ca9-46a0-9040-a21ffd68d74e.png)  
-위의 사진으로 구조를 볼수있는데, Fast R-CNN이랑 RPN의 유무 빼고 모두 같다.  
-RPN의 결과와 feature의 결과를 투영시켜 똑같이 결과를 내는대에는 똑같다.  
+As you can see the structure of Faster R-CNN from the image, The structure is very similar to Fast R-CNN only differs from whether RPN is in or not.  
+The difference is just the image for projection to feature map (change from result of Selective search to result of RPN)  
+</br>
 #### Contribution 2  
-RPN에서 Region proposal의 방법이 기존의 Selective search랑 방법이 다른데, CNN에서 나온 feature의 수만큼 다양한 Anchor box를 만들어 (feature는 원본이미지의 압축버전이라고 생각하면 편하다)
+There is another big technique in RPN.  
+The method is different from Selective search. RPN makes various size and shape of anchor boxes rely on the features from CNN (Because features is small image of original image as the basic onf CNN). The anchor boxes let RPN find small objects.  
+Let's assume that there is 8 X 8 feature. by inserting 9 anchors to each single feature, It finds various size and shape objcets and it can find big objects by choosing multiple features.  
 ![image](https://user-images.githubusercontent.com/88817336/150667909-75660e76-74f5-444d-9dec-b81eb4f5fcbe.png)  
-다양한 크기의 물체를 찾을수 있도록 했다. 8x8 의 feature가 만들어졌다면, 각 1개의 feature마다 9개의 Anchor를 넣어 다양한 크기의 물체를 찾으며 feature를 여러개 선택하여 큰 물체도 찾을수있다.  
 ![image](https://user-images.githubusercontent.com/88817336/150667939-c37f4fc5-7668-4443-91e5-c0d7ebad1be6.png)  
 
 ---
