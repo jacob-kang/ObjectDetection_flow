@@ -113,6 +113,7 @@ The procedure like below.
 3. After get proposed region, project the region onto features. (So you can use region propsal data, and feature map data.)  
 4. Devide selected area into 4 parts and do pooling every parts.  
 5. Then you can get fixed length vector for fc layer.  
+![image](https://user-images.githubusercontent.com/88817336/150492142-3a2de41a-5ebf-4da2-9955-cc94743a78b0.png)  
 ![image](https://user-images.githubusercontent.com/88817336/150491907-a70dd7b5-49c1-4894-95d7-b7251e336b47.png)  
 Fast R-CNN은 SPP-Net과 똑같이 Input 이미지에 바로 CNN을 돌리는것은 똑같다.  
 차이점은 SPP-Net에서는 일부 feature에서의 Region proposal이 이상한 결과를 가져오게된다.  
@@ -120,7 +121,7 @@ Fast R-CNN은 SPP-Net과 똑같이 Input 이미지에 바로 CNN을 돌리는것
 ROI (=Region proposal을 통해 나온 각 영역들)을 통해 유연하게 fc layer로 넘겨주는게 가능해진것이다.  
 방법은 Input 이미지를 한쪽에서는 Region proposal을 돌리고, 나머지 하나는 CNN으로 돌린다.  
 CNN으로 나온 feature에 Region proposal에서 나온 결과 위치를 투영시킨다.  
-![image](https://user-images.githubusercontent.com/88817336/150492142-3a2de41a-5ebf-4da2-9955-cc94743a78b0.png)  
+
 위의 이미지를 예시로 들면, 강아지 위치는 왼쪽 아래인데 그 위치를 그대로 feature 사이즈에 맞춰서 featrue에서 그 위치를 잘라 Max pooling을 하여 2x2의 사이즈를 확보한다.  
 이런식으로 하게되면 fc layer에 들어가는 input을 조정할수 있다.  
 </br>
