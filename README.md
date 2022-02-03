@@ -177,7 +177,7 @@ The relate work is ,the very famous, YOLO.
 _Redmon, Joseph, et al. "You only look once: Unified, real-time object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016._  
 </br>  
 In case of __(c)__ , This is smarter(?)way which is to predict every single feature after Convolutional layers.  
-That is, It saves all the changing process then predict to those. (Is it what I describe correctly?? Oh my English...)  
+That is, It saves all the changing process then predict to those. (Am I describing correctly?? Oh my English...)  
 Single Shot multibox Detector (SSD) uses this structure.  
 SSD is 1 stage detection as well. it is quite fast and good at looking for small object than YOLO.  
 ![image](https://user-images.githubusercontent.com/88817336/151375176-5afe5452-6b03-41d2-9235-e0449e8eae61.png)   
@@ -185,14 +185,15 @@ SSD is 1 stage detection as well. it is quite fast and good at looking for small
 _Liu, Wei, et al. "Ssd: Single shot multibox detector." European conference on computer vision. Springer, Cham, 2016._  
 </br>  
 And Last. __(d)__ is the method of Feature Pyramid Network.  
+The idea is quite simple.  
+Every feature extracting, the size of feature decreases in constant portion. Then multiply the protion to the decreased feature (like up-sampling). then you can get the same size of feature.  
+And overlap those images. Then you can get images which have all the features and is same size.  
 ![image](https://user-images.githubusercontent.com/88817336/151378180-5738b027-d984-4237-afb4-6caeb32740d5.png)  
-
-방법은 간단한데, feature를 추출할수록 일정하게 feature의 사이즈가 줄어드는데, 그 줄어든만큼 feature에 곱해주어 보관한다음, 마지막 feature까지 추출이 되면 마지막 feature도 원래 이미지 크기만큼 업샘플링하여 보관한 사진들을 전부 더한다.   
+This is the picture what I wrote.  
+</br>  
+The upsamling mehtod is like below. Neares Neighbor. There are many method to upsample image. but The author said he just choosed the way as it is simple.  
 ![image](https://user-images.githubusercontent.com/88817336/151378220-bac2bdee-afbd-4bae-b161-ef957c36388d.png)  
 (업샘플링 사진)
-
-그러면 각 feature들의 정보를 전부다 더한 하나의 이미지가 만들어지고 그것에 detection을 돌리는 방법.  
-feature의 정보들을 모두다 버리지도 않으면서, 업샘플링을 해서 원래 크기의 이미지를 만들어 detection을 돌리게되어 성능이 잘나온다.  
 
 ---
 
