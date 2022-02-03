@@ -76,7 +76,7 @@ There are a few problems on R-CNN, The biggest problem was the input size is fie
 Becuase after CNN, there are features map and those are influenced by input size. The bigger size the more featrues.  
 And as we know, after Convolutional layer, there are fully connected layer (fc layer). And those fc layer have to take fixed size.  
 So, before this paper, We must keep the specific size for input image.  
-What if our image like below?
+What if our image like below?  
 ![image](https://user-images.githubusercontent.com/88817336/150489131-93bdb07b-e732-43aa-9bf3-4b2e3df5fc1a.png)  
 Due to these situations, Our model trained something wierd.  
   
