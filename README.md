@@ -140,7 +140,8 @@ In this paper, There would be small but powerful technique. For me, It is hard..
 In my think, Faster R-CNN looks at the problems with different perspective from Fast R-CNN.  
 </br>
 #### Contribution 1  
-
+One of the problem of R-CNN is when it uses Selective search as Region proposal, The Selective search is used as an external modlue. Since it is an external, it is loaded on CPU. Therefore the speed was slow. For example, during the inference time 2.3 seconds, the 2 seconds was used for Region proposal. And the rest 0.3 seconds used for CNN.  
+As it leads Bottle neck, it is highly inefficient.  
 이전 Fast R-CNN의 문제점은 Region proposal을 사용할때 Selective search를 사용했는데, 이것은 하나의 모듈로서 사용하였고, CPU에서 돌아가므로 속도가 상당히 느렸다. 프로세싱 타임 2.3초중 2초가 Region proposal에 사용되었다고 한다. 그래서 Bottle neck(병목현상)이 발생하여 비효율적이었다.  
 이부분에 Faster R-CNN에서는 Region proposal을 외부 모듈에서 사용하는것이 아니라 하나의 Region proposal을 위한 Network를 만들었고(이하 RPN), 이것을 통해 GPU에 연산을 시켜 빠른 연산속도를 이뤄냈다.  
 ![image](https://user-images.githubusercontent.com/88817336/150667961-425c1000-2ca9-46a0-9040-a21ffd68d74e.png)  
