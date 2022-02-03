@@ -165,16 +165,17 @@ There are various researches for this,
 ![image](https://user-images.githubusercontent.com/88817336/151366610-83d001f7-aac4-426a-8e58-e2a48eb711ab.png)   
 This image shows some representative reseraches.  
 In case of __(a)__ , This is to find objects by resizing the input images into various size. After resizng, It is easy to find small objects with anchor box by use of sliding window which finds from start to end. This is quite eidetic and simple.  
-But the problem is making various size images cost much memory and like the way sliding window, it operates too many times. Therefore it costs numerous comuting power. A.K.A. inefficient.  
-The relate work is  _Zhang, Kaipeng, et al. "Joint face detection and alignment using multitask cascaded convolutional networks." IEEE Signal Processing Letters 23.10 (2016): 1499-1503._ 
-</br>
-__(b)__ 같은경우 우리가 알고있는 일반적인 CNN을 활용한 느낌이다. CNN을 돌려 나온 최종 단계의 feature로 object detection을 수행하는 방법.   
-문제점은 CNN은 보통 Convolution -> pooling의 반복으로 점점 width, height는 줄어들면서 channel이 깊어지게 된다.   
-이미지를 점점 추상화해서 저장하게되는것인데 그렇게되면 작은 이미지같은경우 짜잘한 노이즈와 같이 소멸될 확률이 높아진다.  
-또한, Backbone모델의 영향을 많이 받게되므로, 모델의 중요성이 더 크다고 볼수있다.  
-관련 연구로서는 그 이름도 유명한 YOLO다.   
+But the problem is making various size images costs much memory and like the way sliding window, it operates too many times. Therefore it costs numerous comuting power. Simply to say, inefficient.  
+The relate work is  _Zhang, Kaipeng, et al. "Joint face detection and alignment using multitask cascaded convolutional networks." IEEE Signal Processing Letters 23.10 (2016): 1499-1503._  
+</br>  
+
+In case of __(b)__ , This is the way the traditional use of CNN as we know. Do object detection to the last level features from CNN.  
+Usually traditional CNN usage is repetition of Covolution -> Pooling. and this makes the feature have less size of width,height and deep channel.
+The problem is the repetition make the image be abstracted. that means small object could be disappeared like a noise. 
+And since it is affected from backbone model a lot, It is more likely that the model is much important.  
+The relate work is ,the very famous, YOLO.  
 _Redmon, Joseph, et al. "You only look once: Unified, real-time object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016._  
-</br>
+</br>  
 __(c)__ 같은경우 조금더 머리를 쓴 방법인데, Covolutional layer를 통과하면서 나온 각 feature들마다 predict를 돌리는방법이다.  
 즉, 변하는 과정을 모두다 저장하여 그것들에 대해 predict를 하겠다는 뜻.  
 SSD는 1 stage detection으로서 상당히 빠르고 좋으며 Yolo보다 더 작은것을 잘찾는다.  
