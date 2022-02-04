@@ -209,7 +209,7 @@ The author mentioned 2 problems. One is in case of high IoU, some positive sampl
 So There is kind of trade-off between accuracy and IoU. and the Author tried to catch both of them with brilliant idea.  
 ![image](https://user-images.githubusercontent.com/88817336/152478910-a544f1ab-1eb8-4b29-87cf-cb7c9ffe37d0.png)  
 This is a grapth about results of IoU and AP.  
-For instance, (c) means If input IoU is 0.55 , the Output IoU is about 0.6 
+For instance, (c) 
 
 
 
