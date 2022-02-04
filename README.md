@@ -199,8 +199,19 @@ The upsamling mehtod is like below. Neares Neighbor. There are many method to up
 
 * ### Cascade R-CNN  
 _ Cai, Zhaowei, and Nuno Vasconcelos. "Cascade r-cnn: Delving into high quality object detection." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018. _  
+</br>  
+In object detection, The criterion og intersection over union(IoU) is required to define postive and negative.  
+Usually, 0.5 IoU is used as it works empirically well. But, sometimes, 0.5 IoU make results some 'close' false positive which means the results is close to the right answer but not correct.  
+![image](https://user-images.githubusercontent.com/88817336/152478647-647b13e8-be24-4550-9c49-ef81355f2379.png)  
+Like this, (a) has quite many false postives. but (b) has less than (a) and seems like more accurate.  
+</br>
+The author mentioned 2 problems. One is in case of high IoU, some positive sample is disappeared therefore it becomes overfitting. The other is when it trains and inferences, The IoU has been changed due to the metrics. For example, In COCO Metrics, the IoU changes from 0.5 to 0.95 step 0.05.  
+So There is kind of trade-off between accuracy and IoU. and the Author tried to catch both of them with brilliant idea.  
+![image](https://user-images.githubusercontent.com/88817336/152478910-a544f1ab-1eb8-4b29-87cf-cb7c9ffe37d0.png)  
+This is a grapth about results of IoU and AP.  
+For instance, (c) means If input IoU is 0.55 , the Output IoU is about 0.6 
 
-Understanding...   
+
 
 ---
 
