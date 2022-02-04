@@ -1,6 +1,6 @@
 # The Obeject detection papers
   
-##  영어로 변환중 / Translating in English  
+##  Still writing...
 
 This Read Me is for catching object detection flow.  
 The flow is from top to bottom and it is configured with my paper understanding + some informations from blogs.  
