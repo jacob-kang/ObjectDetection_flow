@@ -208,9 +208,19 @@ Like this, (a) has quite many false postives. but (b) has less than (a) and seem
 The author mentioned 2 problems. One is in case of high IoU, some positive sample is disappeared therefore it becomes overfitting. The other is when it trains and inferences, The IoU has been changed due to the metrics. For example, In COCO Metrics, the IoU changes from 0.5 to 0.95 step 0.05.  
 So There is kind of trade-off between accuracy and IoU. and the Author tried to catch both of them with brilliant idea.  
 ![image](https://user-images.githubusercontent.com/88817336/152478910-a544f1ab-1eb8-4b29-87cf-cb7c9ffe37d0.png)  
-This is a grapth about results of IoU and AP.  
-For instance, (c) 
-
+This is a grapth about results of IoU and AP. (For me, It was terribly hard to understand.)  
+(c) is about bbox regressor performance. the X axis is the input IoU value A.K.A hyper parameter. the Y axis is the ouput IoU of the trained model with specifically fixed value.  
+![image](https://user-images.githubusercontent.com/88817336/152640868-f3236cb7-250b-435c-85e1-1948bdc1951a.png)  
+This is the values which a model trained with.  
+</br>
+Here is the example. this may be helpful.  
+There is a model which is trained IoU threshold 0.6 (The green one). and the author tested with this trained model to the testset. the author set the input IoU prameter as 0.6. and the result performance was 0.775.  
+![image](https://user-images.githubusercontent.com/88817336/152641130-d566f529-e101-470e-9290-90cf94e6dc7c.png)  
+Hopefully, You may catch the sense.  
+As I was saying, In (c), The 0.5 trained model perfroms well near 0.5 IoU parameter. and the 0.7 trained model performs well near 0.95 IoU parameter.  
+That could mean, A model which is trained specific value tends to be robust to specific section of IoU.  
+</br>
+(d) is the detector performance (= classification). and this image shows that the higher input of IoU parameter, the lower AP.  
 
 
 ---
