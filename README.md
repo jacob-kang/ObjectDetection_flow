@@ -1,4 +1,4 @@
-# The Obeject detection papers
+# The Obeject detection papers review
   
 ##  Still writing...
 
@@ -7,7 +7,7 @@ The flow is from top to bottom and it is configured with my paper understanding 
 There __may__ be misunderstanding or typo or etc.  
 _Made by Jacob Jisu Kang._  
 
-Note. this Read me skips some basic knowledges such as Perceptron, FFNN, Backpropagation etc.  
+Note. In this Read Me, I skip some basic knowledges such as Perceptron, FFNN, Backpropagation etc.  
 
 ---  
 In 1989, CNN came out in the world. before CNN, People still made lots of effort to solve object classifcaiton, object detection.  
