@@ -223,7 +223,7 @@ Note : From this, It may different flow from above. Because, I'm currently study
 This SE-Net is from attention mechanism. Briefly to say, The attention mechanism is from NLP like when NLP needs to focus some special words. (I would skip describing the attetntion mechanism.)  
 Anyway, The attention mechasim came to computer vision from NLP. And the mechanism is quite simple but powerful.  
 The motivation is (I guess) when we see an image, We tend to focus on somthing importance or interesting. That means there could be importance part in image.  
-The author who write this paper focused on this.  
+The author focused on this.  
 </br>
 ![image](https://user-images.githubusercontent.com/88817336/152290151-52ac6e60-0e83-415e-9b5e-86b75ef06f72.png)   
 Like the image, There are importance priorities among featrues. and SE-Net sets the weight of each features.  
