@@ -218,9 +218,10 @@ There is a model which is trained IoU threshold 0.6 (The green one). and the aut
 ![image](https://user-images.githubusercontent.com/88817336/152641130-d566f529-e101-470e-9290-90cf94e6dc7c.png)  
 Hopefully, You may catch the sense.  
 As I was saying, In (c), The 0.5 trained model perfroms well near 0.5 IoU parameter. and the 0.7 trained model performs well near 0.95 IoU parameter.  
-That could mean, A model which is trained specific value tends to be robust to specific section of IoU.  
+That could mean, A model which is trained specific value tends to be robust to specific section of IoU. and also the proposed bbox is not concrete, The IoU 0.5 model works well and the proposed bbox is quite concrete, The IoU 0.7 model works better than 0.5 model.  
+So we can make a conclusion
 </br>
-(d) is the detector performance (= classification). and this image shows that the higher input of IoU parameter, the lower AP.  
+(d) is the detector performance (= classification). and this image shows that the higher input of IoU parameter, the lower AP. So the model trained by high IoU value is not the perfect job.  
 
 
 ---
