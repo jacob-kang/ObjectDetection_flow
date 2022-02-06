@@ -193,7 +193,7 @@ This is the picture what I wrote.
 </br>  
 The upsamling mehtod is like below. Neares Neighbor. There are many method to upsample image. but The author said he just choosed the way as it is simple.  
 ![image](https://user-images.githubusercontent.com/88817336/151378220-bac2bdee-afbd-4bae-b161-ef957c36388d.png)  
-(Upsampling method)
+(Upsampling method)  
 
 ---
 
@@ -262,5 +262,19 @@ The procedure is like below.
 1. Do CNN.  
 2. Add featrues that come out from CNN to SE-Net.  
 3. The feature forms is probably H X W X C. and need to convert 1 X 1 X C. Due to ranking those feature, The feature forms should be vector.  
-4. Convert H X W X C feature to 1 X 1 X C by Global average pooling.  
-5. 
+4. Convert H X W X C feature to 1 X 1 X C by Global average pooling. (Squeeze)  
+5. Calcurate the dependencies by fc layer and sigmoid (Because only with repetition of fc layer and sigmoid, It can express non-linearity). (Excitation)  
+![image](https://user-images.githubusercontent.com/88817336/152670992-6c313327-d069-4d72-bba0-35f974474e4f.png)  
+6. Multyply to the feature map  
+
+With this SE Net, You can recalibrate your feature map. and this is easy to attach any model simply and doesn't have many parameter so the time-complexity rises a bit.  
+![image](https://user-images.githubusercontent.com/88817336/152671038-b5ac7bb4-e722-40ed-8c12-8c428bb50651.png)  
+
+---
+
+* ### Residual Attention Network for Image Classification  
+_Wang, Fei, et al. "Residual attention network for image classification." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017._  
+</br>
+
+
+
