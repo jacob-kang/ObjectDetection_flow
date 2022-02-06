@@ -226,8 +226,23 @@ So In the graph, We can get high quality proposals in 0.5 without overfitting (d
 
 Anyway, The author focused on the problem then suggested multi-stage R-CNN form (= Cascade R-CNN)  
 ![image](https://user-images.githubusercontent.com/88817336/152669008-29bce7db-f45c-43d6-b63c-82bd484ae062.png)  
+(a) is the faster R-CNN. You can detail in the above.  
+</br>
+(b) is quite similar with Cascade R-CNN but it uses same network head. And use it iteratively at inference.  
+First of all, The rigion proposal B0 is not concrete but abstract and bigger than Ground Truth. And after projection and pooling, the H1 model predicts more concrete than B0.  
+That is the principle of (b). It works and It achives higher accuracy than (a) but the increase is not outstanding.  
+(c) is Integral Loss. It uses multi models. And as you can see, It is kind of ensemble.  
+After CNN and ROI pooling, It uses 3 models and calcurates the losses integrally. But the problem is this method doesn't focus on the region proposal. It's not about what the author mentioned above.  
+</br>
+(d) is the Cascade R-CNN.
+The procedure is like below.  
+1. Do CNN  
+2. Do ROI pooling with B0  
+3. Do classificaiotn and bbox regression. (The B1 is more concrete and specifie area than B0)  
+4. Do ROI pooling with B1 (So The ROI pooling area is more accurate)  
+5. Do classification and bbox regression. (repeatition like iamge)  
 
-
+The method is quite simple but powerful. and the author mentioned that more than 3 stage decreases the accuracy. and it uses not only train phase but also inference phase unlike (b).  
 
 ---
 
