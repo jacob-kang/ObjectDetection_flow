@@ -219,9 +219,14 @@ There is a model which is trained IoU threshold 0.6 (The green one). and the aut
 Hopefully, You may catch the sense.  
 As I was saying, In (c), The 0.5 trained model perfroms well near 0.5 IoU parameter. and the 0.7 trained model performs well near 0.95 IoU parameter.  
 That could mean, A model which is trained specific value tends to be robust to specific section of IoU. and also the proposed bbox is not concrete, The IoU 0.5 model works well and the proposed bbox is quite concrete, The IoU 0.7 model works better than 0.5 model.  
-So we can make a conclusion
+So we can make a conclusion that If the propsoed region is concrete and near GT, The detector performs better. And with the almost exactly performing region proposal, We can get high AP with trained with high value IoU. So Hight performing region propsal and high IoU value trained model, We can achive high AP without 'close' false positive. Of course, it is natural consequence.  
+So In the graph, We can get high quality proposals in 0.5 without overfitting (deu to proposing lots of positive samples) and We can get high AP with 0.7.  
 </br>
 (d) is the detector performance (= classification). and this image shows that the higher input of IoU parameter, the lower AP. So the model trained by high IoU value is not the perfect job.  
+
+Anyway, The author focused on the problem then suggested multi-stage R-CNN form (= Cascade R-CNN)  
+![image](https://user-images.githubusercontent.com/88817336/152669008-29bce7db-f45c-43d6-b63c-82bd484ae062.png)  
+
 
 
 ---
