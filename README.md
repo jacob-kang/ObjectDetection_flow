@@ -299,9 +299,16 @@ And like the author mentioned above, Each level of feature has different mask an
 So the author said the "Residual Attention Network" structure consists of more than 1 attention parts. because, each attetion module tends to catch one feature only.  
 
 ---
+
 * ### BAM: Bottleneck Attention Module  
 _Park, Jongchan, et al. "Bam: Bottleneck attention module." arXiv preprint arXiv:1807.06514 (2018)._  
 </br>
+BAM is very very simple. Just truely simple.  
+It can explained with just one image and one senteces. SE-Net + Spatial attention.  
+![image](https://user-images.githubusercontent.com/88817336/152753613-62c78791-96d1-4c7d-967c-64d1bb472657.png)  
+The Channel attention procedure is almost same with SE-Net. just without sigmoid.
+1. Do Global average pooling.
+2. 
 
 
 
