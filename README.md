@@ -292,7 +292,18 @@ In high-level, The feature after mask has less attention to the background but n
 The author suggested "attention module". The structure is in this image.  
 It is configure as two branches, Soft mask branch and Trunk branch.  
 The Trunk branch is to extract feature map with backbone model (The author mentioned that he recommended using SOTA model)  
-The soft Mask branch is to extract mask map with down sample, up sample. The down sample is used with max pooling
+The soft Mask branch is to extract mask map with down sample, up sample. The down sample is used with max pooling and the up sample is used with linear interpolation. With these two strategies, The only powerful features remains and little noise or meaningless featrue disappear. So it can pull out important feature and be robust from noise.  
+</br>
+![image](https://user-images.githubusercontent.com/88817336/152736943-e9822012-99b8-4fe1-a3c0-769324376e56.png)  
+And like the author mentioned above, Each level of feature has different mask and informations.  
+So the author said the "Residual Attention Network" structure consists of more than 1 attention parts. because, each attetion module tends to catch one feature only.  
+
+---
+* ### BAM: Bottleneck Attention Module  
+_Park, Jongchan, et al. "Bam: Bottleneck attention module." arXiv preprint arXiv:1807.06514 (2018)._  
+</br>
+
+
 
 
 
