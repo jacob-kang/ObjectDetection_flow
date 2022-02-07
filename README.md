@@ -275,6 +275,25 @@ With this SE Net, You can recalibrate your feature map. and this is easy to atta
 * ### Residual Attention Network for Image Classification  
 _Wang, Fei, et al. "Residual attention network for image classification." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017._  
 </br>
+This is Residual "Attention" network. Very similar to ResNet.  
+SE-Net focuses on feature map. That means SE-Net depends on the backbone. If the backbone makes the feature map wrong or wierd, The SE-Net may not work well.  
+The author of this paper focused on pixel-level relationships.  
+The idea is very simple.  
+With mask information, Give depedencies and priority to the image.  
+![image](https://user-images.githubusercontent.com/88817336/152731412-f67d674f-8e77-416a-802b-4b8e9c473280.png)  
+Let's look at this image.  
+In low-level featrue, The soft attention mask has more attetions to wide area.  
+BUt In high-level feature, The soft attention mask has more attentions to narrow area.  
+So after extract soft attention mask, The author projected the spatial area to the feature then she/he got the feature after mask.  
+In low-level, The Feature after mask has less attention to the background but wide area in hot-air balloon.  
+In high-level, The feature after mask has less attention to the background but narrow are in hot-air balloon as well.  
+</br>
+![image](https://user-images.githubusercontent.com/88817336/152734167-21b88b5f-555f-4afb-9f5e-42862a071bfe.png)  
+The author suggested "attention module". The structure is in this image.  
+It is configure as two branches, Soft mask branch and Trunk branch.  
+The Trunk branch is to extract feature map with backbone model (The author mentioned that he recommended using SOTA model)  
+The soft Mask branch is to extract mask map with down sample, up sample. The down sample is used with max pooling
+
 
 
 
