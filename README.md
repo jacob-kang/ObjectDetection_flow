@@ -259,7 +259,7 @@ The motivation is (I guess) when we see an image, We tend to focus on somthing i
 The author focused on this.  
 This is Residual "Attention" network. Very similar to ResNet.  
 In this paper, The author focused on pixel-level relationships. The idea is very simple.  
-With mask information (segmentation), Give depedencies and priority to the image.  
+With mask information, Give depedencies and priority to the image.  
 ![image](https://user-images.githubusercontent.com/88817336/152731412-f67d674f-8e77-416a-802b-4b8e9c473280.png)  
 Let's look at this image.  
 In low-level featrue, The soft attention mask has more attetions to wide area.  
