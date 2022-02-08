@@ -310,14 +310,20 @@ Unlike Residual Attention Network for Image Classification
 * ### BAM: Bottleneck Attention Module  
 _Park, Jongchan, et al. "Bam: Bottleneck attention module." arXiv preprint arXiv:1807.06514 (2018)._  
 </br>
-The problem of Residua Attention Network is costing too much computational power. As it cosists of more than 2 residual block, Time complexity rises.  
+The problem of Residua Attention Network(RAN) is costing too much computational power. As it cosists of more than 2 residual block, Time complexity rises.  
 And The SE-Net focuses on only channel depedencies. And The residual network focuses on pixel-level dependencies.  
-So the author mentioned that 
-It can be explained with just one image and one senteces. SE-Net + Spatial attention.  
+So the author mentioned that not only channel attention but also spatial attention is important. and The attention module should be light-weight and easy to attach to model. But, RAN is not.  
+
+BAM can be explained with just one image and one senteces. SE-Net + Spatial attention.  
 ![image](https://user-images.githubusercontent.com/88817336/152753613-62c78791-96d1-4c7d-967c-64d1bb472657.png)  
-The Channel attention procedure is almost same with SE-Net. just without sigmoid.
-1. Do Global average pooling.
-2. 
+The Channel attention procedure is almost same with SE-Net.
+1. Do Global average pooling. (Flatten)
+2. Fully connect each 1X1 features and reduce the channel with parameter r (The author said the optimal vale r is **16**. it is experimental.)
+3. And fully connect the features and increase the channel to the before feature which not reduce yet.  
+4. Channel attetion completed.  
+The procedure is very similar with SE-Net. just where ther is sigmoid or not. (The sigmoid is after concatenateing of spatial and channel attention)  
+</br>
+The Spatial attention procedure 
 
 
 
