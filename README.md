@@ -246,40 +246,20 @@ The method is quite simple but powerful. and the author mentioned that more than
 
 ---
 
-* ### SE-Net (Squeeze and Excitation)  
-_ Hu, Jie, Li Shen, and Gang Sun. "Squeeze-and-excitation networks." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018. _  
-</br>
 Note : From this, It may different flow from above. Because, I'm currently studying USV project. and previous research in USV, there was SE-Net. So I decieded to study SE-Net and now review here.  
-</br>
-This SE-Net is from attention mechanism. Briefly to say, The attention mechanism is from NLP like when NLP needs to focus some special words. (I would skip describing the attetntion mechanism.)  
-Anyway, The attention mechasim came to computer vision from NLP. And the mechanism is quite simple but powerful.  
-The motivation is (I guess) when we see an image, We tend to focus on somthing importance or interesting. That means there could be importance part in image.  
-The author focused on this.  
-</br>
-![image](https://user-images.githubusercontent.com/88817336/152290151-52ac6e60-0e83-415e-9b5e-86b75ef06f72.png)   
-Like the image, There are importance priorities among featrues. and SE-Net sets the weight of each features.  
-The procedure is like below.  
-1. Do CNN.  
-2. Add featrues that come out from CNN to SE-Net.  
-3. The feature forms is probably H X W X C. and need to convert 1 X 1 X C. Due to ranking those feature, The feature forms should be vector.  
-4. Convert H X W X C feature to 1 X 1 X C by Global average pooling. (Squeeze)  
-5. Calcurate the dependencies by fc layer and sigmoid (Because only with repetition of fc layer and sigmoid, It can express non-linearity). (Excitation)  
-![image](https://user-images.githubusercontent.com/88817336/152670992-6c313327-d069-4d72-bba0-35f974474e4f.png)  
-6. Multyply to the feature map  
-
-With this SE Net, You can recalibrate your feature map. and this is easy to attach any model simply and doesn't have many parameter so the time-complexity rises a bit.  
-![image](https://user-images.githubusercontent.com/88817336/152671038-b5ac7bb4-e722-40ed-8c12-8c428bb50651.png)  
 
 ---
 
 * ### Residual Attention Network for Image Classification  
 _Wang, Fei, et al. "Residual attention network for image classification." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017._  
 </br>
+This Residual Attention Network(RAN) is from attention mechanism. Briefly to say, The attention mechanism is from NLP like when NLP needs to focus some special words. (I would skip describing the attetntion mechanism.)  
+Anyway, The attention mechasim came to computer vision from NLP. And the mechanism is quite simple but powerful.  
+The motivation is (I guess) when we see an image, We tend to focus on somthing importance or interesting. That means there could be importance part in image.  
+The author focused on this.  
 This is Residual "Attention" network. Very similar to ResNet.  
-SE-Net focuses on feature map. That means SE-Net depends on the backbone. If the backbone makes the feature map wrong or wierd, The SE-Net may not work well.  
-The author of this paper focused on pixel-level relationships.  
-The idea is very simple.  
-With mask information, Give depedencies and priority to the image.  
+In this paper, The author focused on pixel-level relationships. The idea is very simple.  
+With mask information (segmentation), Give depedencies and priority to the image.  
 ![image](https://user-images.githubusercontent.com/88817336/152731412-f67d674f-8e77-416a-802b-4b8e9c473280.png)  
 Let's look at this image.  
 In low-level featrue, The soft attention mask has more attetions to wide area.  
@@ -297,14 +277,43 @@ The soft Mask branch is to extract mask map with down sample, up sample. The dow
 ![image](https://user-images.githubusercontent.com/88817336/152736943-e9822012-99b8-4fe1-a3c0-769324376e56.png)  
 And like the author mentioned above, Each level of feature has different mask and informations.  
 So the author said the "Residual Attention Network" structure consists of more than 1 attention parts. because, each attetion module tends to catch one feature only.  
+</br>
+But as you may feel, It consists of many residual block as the author mentiond "each attetion module tends to catch one feature only". Therefore, It costs many memory and computational power.  
+
+---
+
+* ### SE-Net (Squeeze and Excitation)  
+_ Hu, Jie, Li Shen, and Gang Sun. "Squeeze-and-excitation networks." Proceedings of the IEEE conference on computer vision and pattern recognition. 2018. _  
+</br>
+Although Residual Attention Network (RAN) is powerful and more likely be same with "Attention", it costs a lot.  
+In this paper, The author focused on feature level attention.  
+RAN uses mask then do pixel-wise operation. But SE-Net uses feature dependencies.  
+The struchture is like below.  
+![image](https://user-images.githubusercontent.com/88817336/152290151-52ac6e60-0e83-415e-9b5e-86b75ef06f72.png)   
+Like the image, There are importance priorities among featrues. and SE-Net sets the weight of each features.  
+The procedure is like below.  
+1. Do CNN.  
+2. Add featrues that come out from CNN to SE-Net.  
+3. The feature forms is probably H X W X C. and need to convert 1 X 1 X C. Due to ranking those feature, The feature forms should be vector.  
+4. Convert H X W X C feature to 1 X 1 X C by Global average pooling. (Squeeze)  
+5. Calcurate the dependencies by fc layer and sigmoid (Because only with repetition of fc layer and sigmoid, It can express non-linearity). (Excitation)  
+![image](https://user-images.githubusercontent.com/88817336/152670992-6c313327-d069-4d72-bba0-35f974474e4f.png)  
+6. Multyply to the feature map  
+
+With this SE Net, You can recalibrate your feature map. and this is easy to attach any model simply and doesn't have many parameter so the time-complexity rises a bit.  
+![image](https://user-images.githubusercontent.com/88817336/152671038-b5ac7bb4-e722-40ed-8c12-8c428bb50651.png)  
+</br>
+Unlike Residual Attention Network for Image Classification
 
 ---
 
 * ### BAM: Bottleneck Attention Module  
 _Park, Jongchan, et al. "Bam: Bottleneck attention module." arXiv preprint arXiv:1807.06514 (2018)._  
 </br>
-BAM is very very simple. Just truely simple.  
-It can explained with just one image and one senteces. SE-Net + Spatial attention.  
+The problem of Residua Attention Network is costing too much computational power. As it cosists of more than 2 residual block, Time complexity rises.  
+And The SE-Net focuses on only channel depedencies. And The residual network focuses on pixel-level dependencies.  
+So the author mentioned that 
+It can be explained with just one image and one senteces. SE-Net + Spatial attention.  
 ![image](https://user-images.githubusercontent.com/88817336/152753613-62c78791-96d1-4c7d-967c-64d1bb472657.png)  
 The Channel attention procedure is almost same with SE-Net. just without sigmoid.
 1. Do Global average pooling.
