@@ -318,7 +318,7 @@ BAM can be explained with just one image and one senteces. SE-Net + Spatial atte
 ![image](https://user-images.githubusercontent.com/88817336/152753613-62c78791-96d1-4c7d-967c-64d1bb472657.png)  
 The Channel attention procedure is almost same with SE-Net.
 1. Do Global average pooling. (Flatten)
-2. Fully connect each 1X1 features and reduce the channel with parameter r (The author said the optimal vale r is **16**. it is experimental.)
+2. Fully connect each 1X1 features and reduce the channel with parameter r (The author said the optimal value r is **16**. it is experimental.)
 3. And fully connect the features and increase the channel to the before feature which not reduce yet.  
 4. Channel attetion completed.  
 The procedure is very similar with SE-Net. just where ther is sigmoid or not. (The sigmoid is after concatenateing of spatial and channel attention)  
