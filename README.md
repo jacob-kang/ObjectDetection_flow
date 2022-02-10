@@ -323,7 +323,29 @@ The Channel attention procedure is almost same with SE-Net.
 4. Channel attetion completed.  
 The procedure is very similar with SE-Net. just where ther is sigmoid or not. (The sigmoid is after concatenateing of spatial and channel attention)  
 </br>
-The Spatial attention procedure 
+The Spatial attention consists of the dilated convolution. (Reference:_Fisher Yu and Vladlen Koltun. Multi-scale context aggregation by dilated convolutions.
+2015._)  
+The author chooses the dillated convolution as it enlarges the recpetive fields with high effciency. And the author said he/she ovserved the dilated convolution distructs a more effective spatial map than the standard convolution.  
+To get the Spatial attention procedure, first of all, Do 1X1 convolution to control feature channel.  
+</br>
+Tips. When you see some paper, There might be lots of 1x1 convolution operation.  
+Becuase 1x1 convolution pros are less parameter, non-linearity, controlling channels.  
+![image](https://user-images.githubusercontent.com/88817336/153346940-accd2895-076b-490e-bc3a-79dcaa8ccd89.png)  
+</br>
+As I was saying about procedure of spatial attention, after 1X1 convolution, do dilated convolution with value **d = 4**. it is experimental as well.  
+Then reduce the channel to 1 channel by 1x1 convolution. So you can get H x W x 1 shape Spatial attention and 1 x 1 x C shape.  
+We need to combine those two. So the author choosed element-wise as combining mehtod to expand the shape to H x W x C. (This is empirically selected)  
+after that, take sigmoid to get the range from 0 to 1. then you can get the bam attention and multipy it to origin featre F.  
+These are the whole procedure. This is quite simple but powerful method.  
+![image](https://user-images.githubusercontent.com/88817336/153352602-95af0118-64df-4c64-b545-6eb72b2134d2.png)  
+
+---
+
+* ### CBAM: Convolutional Block Attention Module  
+_Woo, Sanghyun, et al. "Cbam: Convolutional block attention module." Proceedings of the European conference on computer vision (ECCV). 2018._  
+</br>
+
+
 
 
 
