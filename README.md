@@ -330,13 +330,16 @@ To get the Spatial attention procedure, first of all, Do 1X1 convolution to cont
 </br>
 Tips. When you see some paper, There might be lots of 1x1 convolution operation.  
 Becuase 1x1 convolution pros are less parameter, non-linearity, controlling channels.  
+
 ![image](https://user-images.githubusercontent.com/88817336/153346940-accd2895-076b-490e-bc3a-79dcaa8ccd89.png)  
+
 </br>
 As I was saying about procedure of spatial attention, after 1X1 convolution, do dilated convolution with value **d = 4**. it is experimental as well.  
 Then reduce the channel to 1 channel by 1x1 convolution. So you can get H x W x 1 shape Spatial attention and 1 x 1 x C shape.  
 We need to combine those two. So the author choosed element-wise as combining mehtod to expand the shape to H x W x C. (This is empirically selected)  
 after that, take sigmoid to get the range from 0 to 1. then you can get the bam attention and multipy it to origin featre F.  
 These are the whole procedure. This is quite simple but powerful method.  
+
 ![image](https://user-images.githubusercontent.com/88817336/153352602-95af0118-64df-4c64-b545-6eb72b2134d2.png)  
 
 ---
