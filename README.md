@@ -372,8 +372,21 @@ Last the spatial attention.
 The basic idea is very similar to channel attention.  
 The spatial procedure is like below.
 1. Do max pooling and average pooling.
-2. Concatenate then toegether and do cnn.
-3. 
+2. Concatenate them toegether and do cnn.
+3. Go throw sigmoid then The spatial attention completed.
+</br>
+With this, CBAM also works better than SE-Net almost all task (In the paper, Classification)  
+And it also easy to attach to the model.  
+![image](https://user-images.githubusercontent.com/88817336/153551868-4e85c5f6-5918-43d4-96ca-b9ece8ec49ff.png)  
+With grad-CAM, We can see where the model looks.  
+![image](https://user-images.githubusercontent.com/88817336/153552005-11504bf2-c0fa-4c6e-b633-b281cc6cb29e.png)  
+The model which includes CBAM tends to look objects specifically.  
+
+---
+From this, I would study and self-review about Backbone model from LeNet to SOTA.  
+Wish me luck  
+
+---
 
 
 
