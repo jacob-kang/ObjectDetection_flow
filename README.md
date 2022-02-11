@@ -367,8 +367,9 @@ The channel attention procedure is like below.
 4. Go throw sigmoid then The channel attention completed.  
 </br>
 Last the spatial attention.  
+
 ![image](https://user-images.githubusercontent.com/88817336/153550362-888cd655-c07d-4ca4-a5d5-aace8a6b6c17.png)  
-The basic idea is very similar to channel attention.    
+The basic idea is very similar to channel attention.  
 The spatial procedure is like below.
 1. Do max pooling and average pooling.
 2. Concatenate then toegether and do cnn.
