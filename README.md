@@ -1,6 +1,4 @@
 # The Obeject detection papers review
-  
-##  Still writing...
 
 This Read Me is for catching object detection flow (+ English study).  
 The flow procedure is from top to bottom and it consists of my paper understanding + some informations from blogs.  
