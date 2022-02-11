@@ -341,6 +341,11 @@ These are the whole procedure. This is quite simple but powerful method.
 
 ![image](https://user-images.githubusercontent.com/88817336/153352602-95af0118-64df-4c64-b545-6eb72b2134d2.png)  
 
+With this, The author mentioned that BAM works better than SE-Net.  
+And here is the comparing table between BAM and SE-Net.  
+![image](https://user-images.githubusercontent.com/88817336/153548173-ef6ea4c8-a4cd-4ee5-a5e3-0dab4f76b655.png)
+
+
 ---
 
 * ### CBAM: Convolutional Block Attention Module  
