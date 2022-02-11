@@ -2,8 +2,8 @@
   
 ##  Still writing...
 
-This Read Me is for catching object detection flow.  
-The flow is from top to bottom and it is configured with my paper understanding + some informations from blogs.  
+This Read Me is for catching object detection flow (+ English study).  
+The flow procedure is from top to bottom and it consists of my paper understanding + some informations from blogs.  
 There __may__ be misunderstanding or typo or etc.  
 _Made by Jacob Jisu Kang._  
 
