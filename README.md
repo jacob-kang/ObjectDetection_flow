@@ -377,6 +377,7 @@ The spatial procedure is like below.
 </br>
 With this, CBAM also works better than SE-Net almost all task (In the paper, Classification)  
 And it also easy to attach to the model.  
+
 ![image](https://user-images.githubusercontent.com/88817336/153551868-4e85c5f6-5918-43d4-96ca-b9ece8ec49ff.png)  
 
 With grad-CAM, We can see where the model looks.  
