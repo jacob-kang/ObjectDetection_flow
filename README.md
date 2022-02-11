@@ -351,6 +351,29 @@ And here is the comparing table between BAM and SE-Net.
 * ### CBAM: Convolutional Block Attention Module  
 _Woo, Sanghyun, et al. "Cbam: Convolutional block attention module." Proceedings of the European conference on computer vision (ECCV). 2018._  
 </br>
+This CBAM is after work of BAM. Of course, The corresponding author is same person.  
+Anyway, in this paper, the author said very very similary to BAM. The CBAM can be attached any strucure and just a few parameter is added but the performance significantly rised.  
+In BAM, The structures are spatial attention and channel attention. and operate those at the same time and combine them together to determine attention priority.  
+But CBAM is a little bit different.  
+![image](https://user-images.githubusercontent.com/88817336/153548887-dc4659ff-03d3-4e3f-8aaf-ff3249accc0b.png)  
+The procedure is like above. CBAM gets channel attention first then gets spatial attention with the channel attention. (For me, I think the channel attention and spatial attention is hierarchical. So channel attention is first and next is spatial attention)  
+The authrod suggested that spatial attention focuses on 'where' is an informative part and channel attention focuses on 'what' is an informative. and they are complementary.  
+And by not only just using average pooling but also using max pooling, the author said he/she doesn't miss the informative information.  
+![image](https://user-images.githubusercontent.com/88817336/153549252-713b265e-3a3e-4cd8-9be0-3817543c0b90.png)  
+The channel attention procedure is like below.  
+1. Do max pooling and average pooling.
+2. Insert to the Multi-layer Perceptron (1 hidden layer) and share it. (To reduce the parameter overhead, the hidden activation size is C/r (same like BAM))  
+3. After shared network applied to the discriptor (The max pooled feature and average pooled feature), Combine them by element-wise summation.  
+4. Go throw sigmoid then The channel attention completed.  
+</br>
+Last the spatial attention.  
+![image](https://user-images.githubusercontent.com/88817336/153550362-888cd655-c07d-4ca4-a5d5-aace8a6b6c17.png)  
+The basic idea is very similar to channel attention.    
+The spatial procedure is like below.
+1. Do max pooling and average pooling.
+2. Concatenate then toegether and do cnn.
+3. 
+
 
 
 
