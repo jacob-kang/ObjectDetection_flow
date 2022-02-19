@@ -8,6 +8,8 @@ _Made by Jacob Jisu Kang._
 Note. In this Read Me, I skip some basic knowledges such as Perceptron, FFNN, Backpropagation etc.  
 
 ---  
+Let's begin!  
+</br>
 In 1989, CNN came out in the world. before CNN, People still made lots of effort to solve object classifcaiton, object detection.  
 CNN made those hard problems be easy to solve or apporach. __But__ Still hard.  
 So There were numerous papers to approach those hard problem with CNN.  
