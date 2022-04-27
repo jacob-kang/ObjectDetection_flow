@@ -383,19 +383,4 @@ And it also easy to attach to the model.
 With grad-CAM, We can see where the model looks.  
 ![image](https://user-images.githubusercontent.com/88817336/153552005-11504bf2-c0fa-4c6e-b633-b281cc6cb29e.png)  
 
-The model which includes CBAM tends to look objects specifically.  
-
----
-From this, I would study and self-review about Backbone model from LeNet to SOTA.  
-Wish me luck  
-
----
-
-
-
-
-
-
-
-
-
+The model which includes CBAM tends to look objects specifically.
